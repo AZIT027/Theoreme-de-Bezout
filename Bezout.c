@@ -97,9 +97,16 @@ int main() {
     if (c % pgcd !=0) { printf("il n'existe aucune solution entière can %d ne divise pas %d \n",pgcd,c);} /*verification si c est divisible par le pgcd(a,b) ou non, si non on affiche le message ecrit dans printf*/
     else{ /*si c est divisible par le pgcd(a,b)*/
         printf("il existe au moins une solution entiere car %d divise %d tel que (%d=%d x %d)\n\n",pgcd,c,c,pgcd,c/pgcd);
-        printf("on a \t %d x (%d) + %d x (%d) = %d\n tel que x0=%d et y0=%d \n\n",init_a, x, init_b, y,pgcd,x,y); /*les coefficients de Bezout*/
-        printf("La solution particuliere est :(xp, yp) = (x0 + c/d, y0 + c/d) \n Alors (xp, yp) = (%d + %d, %d + %d)=(%d,%d) \n\n",x,c/pgcd,y,c/pgcd,x+c/pgcd,y+c/pgcd);
-        printf("la solution generale est : (x, y) = (xp + nk, yp + mk), k ∈ Z,\t\toù xp, yp, n, m ∈ Z sont des constantes fixees.\n\n Donc:\t(x, y) = (%d +(%d)k, %d + (%d)k)",x+c/pgcd,init_b/pgcd,y+c/pgcd,-init_a/pgcd);
+        
+        int xp,yp,x0,y0;
+        x0=c/pgcd*x ;
+        y0=c/pgcd*y;
+        xp=x0+c/pgcd;
+        yp=y0+c/pgcd;
+        
+        printf("on a \t %d x (%d) + %d x (%d) = %d\n tel que x0=%d et y0=%d \n\n",init_a,x0, init_b,y0,pgcd*c/pgcd,x0,y0); /*les coefficients de Bezout*/
+        printf("La solution particuliere est :(xp, yp) = (x0 + c/d, y0 + c/d) \n Alors (xp, yp) = (%d + %d, %d + %d)=(%d,%d) \n\n",x0,c/pgcd,y0,c/pgcd,xp,yp);
+        printf("la solution generale est : (x, y) = (xp + nk, yp + mk), k ∈ Z,\t\toù xp, yp, n, m ∈ Z sont des constantes fixees.\n\n Donc:\t(x, y) = (%d +(%d)k, %d + (%d)k)",xp,init_b/pgcd,yp,-init_a/pgcd);
     }
     
     
